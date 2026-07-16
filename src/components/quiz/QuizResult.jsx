@@ -14,14 +14,18 @@ export default function QuizResult({ result, name, bodyShape, onRetake }) {
   const secondary = archetypes[result.secondaryKey]
   const [showCard, setShowCard] = useState(false)
   const [downloading, setDownloading] = useState(false)
+  const [downloadError, setDownloadError] = useState(null)
 
   const maxScore = result.sorted[0][1] || 1
   const fitGuide = computeFitGuide(bodyShape, result.primaryKey)
 
   const handleDownload = async () => {
     setDownloading(true)
+    setDownloadError(null)
     try {
       await downloadStyleCard(result, primary, secondary, name)
+    } catch {
+      setDownloadError('เกิดข้อผิดพลาด ลองใหม่อีกครั้งนะ')
     } finally {
       setDownloading(false)
     }
@@ -149,6 +153,9 @@ export default function QuizResult({ result, name, bodyShape, onRetake }) {
                   {downloading ? 'กำลังบันทึก...' : 'ดาวน์โหลดรูปภาพ'}
                 </button>
               </div>
+              {downloadError && (
+                <p className="text-center text-[13px] text-alert">{downloadError}</p>
+              )}
             </div>
           </div>,
           document.body,

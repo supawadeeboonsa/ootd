@@ -38,6 +38,9 @@ function wrapText(ctx, text, maxWidth) {
 function loadImage(src, timeoutMs = 2500) {
   return new Promise((resolve) => {
     const img = new Image()
+    // Required for cross-origin images (e.g. Unsplash) — without this the
+    // canvas is "tainted" and toDataURL() throws a SecurityError.
+    img.crossOrigin = 'anonymous'
     let settled = false
     const finish = (value) => {
       if (settled) return
@@ -225,7 +228,13 @@ export async function downloadStyleCard(result, primary, secondary, name) {
 
   ctx.restore()
 
-  const dataUrl = canvas.toDataURL('image/png')
+  let dataUrl
+  try {
+    dataUrl = canvas.toDataURL('image/png')
+  } catch {
+    throw new Error('ไม่สามารถสร้างรูปภาพได้ ลองใหม่อีกครั้ง')
+  }
+
   const link = document.createElement('a')
   link.download = `ootd-style-${primary.key}.png`
   link.href = dataUrl
