@@ -1,12 +1,6 @@
 // Data derived from style-quiz-concept.md and onboarding-quiz-concept.md
 
-// Drop image files into public/mood-images/<styleKey>/1.jpg ... 4.jpg and they'll
-// appear automatically — this just builds the expected file paths per style.
-function moodImages(key) {
-  return [1, 2, 3, 4].map((n) => `/mood-images/${key}/${n}.jpg`)
-}
-
-// Real photos sourced from Unsplash (free license), for styles that already have a full set.
+// Real photos sourced from Unsplash (free license) for each style's mood collage.
 function unsplash(id) {
   return `https://images.unsplash.com/${id}?q=80&w=600&auto=format&fit=crop`
 }
@@ -68,7 +62,12 @@ export const archetypes = {
       ['🧵', 'ผ้าสีครีม'],
       ['🌳', 'รั้วสวน'],
     ],
-    images: moodImages('oldMoney'),
+    images: [
+      unsplash('photo-1677064061401-f77f966ff8a1'),
+      unsplash('photo-1542496658-e33a6d0d50f6'),
+      unsplash('photo-1528458909336-e7a0adfed0a5'),
+      unsplash('photo-1530328881134-8c525cc57036'),
+    ],
   },
   koreanCasual: {
     key: 'koreanCasual',
@@ -84,7 +83,12 @@ export const archetypes = {
       ['🎀', 'ผ้า pastel'],
       ['🌇', 'afternoon light'],
     ],
-    images: moodImages('koreanCasual'),
+    images: [
+      unsplash('photo-1509042239860-f550ce710b93'),
+      unsplash('photo-1485955900006-10f4d324d411'),
+      unsplash('photo-1630920501459-f3e99320c4a5'),
+      unsplash('photo-1613578519724-22fdb5d06388'),
+    ],
   },
   smartCasual: {
     key: 'smartCasual',
@@ -100,7 +104,12 @@ export const archetypes = {
       ['🏙️', 'เมืองผ่านกระจก'],
       ['🪟', 'แสงยามเช้า'],
     ],
-    images: moodImages('smartCasual'),
+    images: [
+      unsplash('photo-1449247709967-d4461a6a6103'),
+      unsplash('photo-1473188588951-666fce8e7c68'),
+      unsplash('photo-1541628951107-a9af5346a3e4'),
+      unsplash('photo-1662038271111-5b1c0b4157e8'),
+    ],
   },
   vintage: {
     key: 'vintage',
@@ -116,7 +125,12 @@ export const archetypes = {
       ['🧶', 'fabric pattern เก่า'],
       ['🕯️', 'แสงอุ่น'],
     ],
-    images: moodImages('vintage'),
+    images: [
+      unsplash('photo-1602848597941-0d3d3a2c1241'),
+      unsplash('photo-1516961642265-531546e84af2'),
+      unsplash('photo-1701199993123-c56bc0f7270d'),
+      unsplash('photo-1561212856-44e9bae482aa'),
+    ],
   },
 }
 
