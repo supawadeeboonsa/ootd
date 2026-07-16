@@ -16,4 +16,4 @@ export const bestOutfits = [
   { id: 3, name: 'Rainy Day Smart', tag: 'RAINY DAY' },
 ]
 
-export const weeklyInsight = 'สัปดาห์นี้คุณใส่โทนสีเข้มถึง 5 วัน'
+export const weeklyInsight =  'สัปดาห์นี้คุณใส่โทนสีเข้มถึง 5 วัน'
